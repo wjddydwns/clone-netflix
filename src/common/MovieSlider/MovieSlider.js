@@ -10,8 +10,8 @@ const MovieSlider = ({title,movies, responsive }) => {
     
   return (
     <div>
-        
       <h3>{title}</h3>
+      <div className='slide_box'>
       <Carousel
         infinite={true}
         centerMode={true}
@@ -23,6 +23,7 @@ const MovieSlider = ({title,movies, responsive }) => {
           <MovieCard movie={movie} key={index} />
         ))}
       </Carousel>
+    </div>
     </div>
     
   )

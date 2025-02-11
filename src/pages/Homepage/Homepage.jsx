@@ -6,11 +6,15 @@ import React from 'react'
 //4 upcoming movie
 import Banner from './Components/Banner/Banner'
 import PopularMovieSlide from './Components/PopularMovieSlide/PopularMovieSlide'
+import TopRateMovieSlide from './Components/TopRateMovieSlide/TopRateMovieSlide'
+import UpcomingMoviesSlide from './Components/UpcomingMoviesSlide/UpcomingMoviesSlide'
 const Homepage = () => {
   return (
     <div>
       <Banner/>
       <PopularMovieSlide/>
+      <TopRateMovieSlide/>
+      <UpcomingMoviesSlide/>
     </div>
   )
 }

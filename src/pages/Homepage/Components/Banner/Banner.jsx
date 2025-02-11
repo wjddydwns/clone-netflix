@@ -1,12 +1,12 @@
 import React from 'react'
 import './Banner.style.css'
-import { usePopluarMoviesQuery } from '../../../../hooks/usePopularMoviesQuery'
+import { usePopularMoviesQuery } from '../../../../hooks/usePopularMoviesQuery'
 import FadeContent from '../../../../assets/Animations/FadeContent/FadeContent'
 import Alert from 'react-bootstrap/Alert';
 
 
 const Banner = () => {
-    const {data,isLoading,isError,error} = usePopluarMoviesQuery()
+    const {data,isLoading,isError,error} = usePopularMoviesQuery()
     console.log("data",data)
     if(isLoading){
       <h1>Loading...</h1>
