@@ -10,7 +10,7 @@ import TopRateMovieSlide from './Components/TopRateMovieSlide/TopRateMovieSlide'
 import UpcomingMoviesSlide from './Components/UpcomingMoviesSlide/UpcomingMoviesSlide'
 const Homepage = () => {
   return (
-    <div>
+    <div style={{backgroundColor:"#0c0c0c"}}>
       <Banner/>
       <PopularMovieSlide/>
       <TopRateMovieSlide/>

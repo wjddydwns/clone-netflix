@@ -6,11 +6,25 @@
     height: 200px;
 
 }
+.title{
+
+    display: flex;
+    align-items: flex-end;
+    width: 90%;
+    height: 100px;
+    color: white;
+    font-size: 26px;
+}
+.slide_container{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;}
 .slide_box{
     justify-content: center;
     align-items: center;
     display: flex;
-    width: 100%;
+    width: 90%;
     height: 200px;
 }
 @media(max-width:480px){

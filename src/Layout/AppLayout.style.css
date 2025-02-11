@@ -4,14 +4,22 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 60px;
+  height: 70px;
   z-index: 4;
 
 }
-
+.box:before{
+  z-index: -1;
+  content:'';
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8),transparent);
+  position: absolute;
+  left: 0;
+  height: 70px;
+  width: 100%;
+}
 .nav-color {
   position: fixed;
-  height: 60px;
+  height: 70px;
   width: 95%;
   
   }
@@ -24,9 +32,7 @@
 /* 기본적으로 배경은 투명 */
 /* 검색 영역 */
 .search {
-  right: 15px;
-  top: 12px;
-  position: absolute;
+  position: relative;
   display: flex;
 }
 
@@ -34,6 +40,7 @@
 .search-box {
   display: flex;
   align-items: center;
+
   position: relative;
   border-radius: 5px;
   background: transparent;
@@ -42,6 +49,9 @@
 
 /* 검색창이 활성화되면 검색창 내부 배경 변경 */
 .search-box.active {
+ 
+  display: flex;
+  align-items: center;
   height: 38px;
   background: rgba(0, 0, 0, 0.75);
 }
@@ -63,41 +73,46 @@
 
 /* 검색 입력창 활성화 상태 */
 .search input.toggle {
+
   width: 300px;
   border-color: #fff;
 }
 
 /* 검색 아이콘 */
 .search img {
+  margin-left: 5px;
   width: 21px;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   cursor: pointer;
 }
 
 .nav {
   width: 100%;
-  height: 60px;
+  height: 70px;
   z-index: 4;
   position: fixed;
   top: 0;
   display: flex;
-
   left: 0;
   justify-content: center;
   /* Animation */
   transition-timing-function: ease-in;
   transition: all 0.5s;
 }
-
+.bell{
+  width: 39px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
 .user {
-  position: fixed;
-  top: 9px;
-  right: 20px;
-  width: 40px;
-  object-fit: contain;
+  width: 35px;
+  height: 35px;
+  border-radius: 20%;
+  cursor: pointer;
 }
 .nav_black {
   z-index: 5;
@@ -110,4 +125,15 @@
   left: 20px;
   width: 80px;
   object-fit: contain;
+}
+.right-contant {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* 요소 사이 여백 */
+}
+
+@media(max-width:991px){
+  .search{
+display: none;
+  }
 }

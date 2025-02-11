@@ -1,5 +1,5 @@
 .banner{
-    height: 60vh;
+    height: 90vh;
     background-position:bottom;
 }
 .banner:before{
@@ -7,7 +7,7 @@
     background: linear-gradient(to top, rgba(0, 0, 0, 0.65),transparent);
     position: absolute;
     left: 0;
-    height: 60vh;
+    height: 90vh;
     width: 100%;
 }
 .pop_info{

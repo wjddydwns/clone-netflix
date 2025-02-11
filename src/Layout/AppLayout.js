@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import Button from 'react-bootstrap/Button';
+import { FaRegBell } from "react-icons/fa6";
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
@@ -66,6 +66,7 @@ const AppLayout = () => {
               </Nav>
 
               {/* 검색 영역 */}
+              <div className="right-contant">
               <div className={`search`} ref={searchRef}>
                 <div className={`search-box ${isInputVisible ? "active" : ""}`}>
                   <img
@@ -81,7 +82,17 @@ const AppLayout = () => {
                   />
                 </div>
               </div>
-
+              <div className="bell">
+              <FaRegBell color="white"size={21}/>
+              </div>
+             <div className="user_box">
+             <img
+              className="user"
+              src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+              alt="user"
+              />
+             </div>
+             </div>
             </Navbar.Collapse>
           </Container>
         </Navbar>

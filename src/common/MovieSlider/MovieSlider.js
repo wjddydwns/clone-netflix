@@ -6,11 +6,11 @@ import MovieCard  from '../MovieCard/MovieCard'
 
 
 
-const MovieSlider = ({title,movies, responsive }) => {
+const MovieSlider = ({title,movies,responsive }) => {
     
   return (
-    <div>
-      <h3>{title}</h3>
+    <div className='slide_container'>
+      <div className='title'>{title}</div>
       <div className='slide_box'>
       <Carousel
         infinite={true}

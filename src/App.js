@@ -18,7 +18,7 @@ function App() {
   return (
   <Routes>
     
-    <Route path='/' element ={<AppLayout/>}>
+    <Route path='/browse' element ={<AppLayout/>}>
       <Route index element ={<Homepage/>}/>
       <Route path ="movies">
         <Route index element={<MoviePage/>}/>
