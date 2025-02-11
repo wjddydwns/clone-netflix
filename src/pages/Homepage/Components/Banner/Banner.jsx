@@ -16,6 +16,7 @@ const Banner = () => {
     }
   return (
     // data 를 보면 poster_path 는 end_point 경로만 제공해줘서 이미지를 이런식으로 작성해야함.
+    
     <div style={{
       backgroundImage:"url(" + `https://media.themoviedb.org/t/p/w1920_and_h1080_bestv2${data?.results[0].poster_path}` + ")"
     }}

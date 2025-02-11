@@ -6,7 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Outlet } from 'react-router-dom';
 import './AppLayout.style.css'
-import logo from '../assets/logo.png'
+import logo from '../assets/img/logo.png'
 
 const AppLayout = () => {
   return (
