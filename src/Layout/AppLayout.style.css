@@ -1,0 +1,30 @@
+.box{
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  z-index: 3;
+
+}
+.box:before{
+  content:'';
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65),transparent);
+  position: fixed;
+  left: 0;
+  z-index: -1;
+  height: 60px;
+  width: 100%;
+  pointer-events: none;
+}
+.nav-color {
+  position: fixed;
+  height: 60px;
+  width: 95%;
+  
+  }
+
+  .outlet-container {
+    position: relative;
+  }
