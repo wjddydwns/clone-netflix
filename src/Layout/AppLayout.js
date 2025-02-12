@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import './AppLayout.style.css';
 import logo from '../assets/img/logo.png';
 import search from '../assets/img/search.png';
@@ -12,8 +12,15 @@ import search from '../assets/img/search.png';
 const AppLayout = () => {
   const [isInputVisible, setIsInputVisible] = useState(false);
   const [scroll, setScroll] = useState(false);
+  const [keyword,setKeyword] =useState('')
   const searchRef = useRef(null);
-
+  const navigate = useNavigate()
+  const searchByKeyWord=(event)=>{
+    event.preventDefault()
+    //url바꿔주기
+    navigate(`/browse/movies?q=${keyword}`)
+    setKeyword("")
+  }
   // 스크롤 이벤트 리스너 설정 (cleanup 포함)
   useEffect(() => {
     const handleScroll = () => {
@@ -54,7 +61,7 @@ const AppLayout = () => {
         <Navbar expand="lg" className="bg-transparent nav-color">
           <Container fluid>
             <Navbar.Brand href="#">
-              <img width={100} src={logo} alt="Logo" />
+              <img width={100} src={logo} alt="Logo" onClick={()=>navigate(`/browse`)}/>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
@@ -66,6 +73,7 @@ const AppLayout = () => {
               </Nav>
 
               {/* 검색 영역 */}
+              <Form onSubmit={searchByKeyWord}>
               <div className="right-contant">
               <div className={`search`} ref={searchRef}>
                 <div className={`search-box ${isInputVisible ? "active" : ""}`}>
@@ -79,6 +87,8 @@ const AppLayout = () => {
                     className={`input ${isInputVisible ? "toggle" : ""}`}
                     type="text"
                     placeholder="제목, 사람, 장르"
+                    value={keyword}
+                    onChange={(event)=>setKeyword(event.target.value)}
                   />
                 </div>
               </div>
@@ -93,6 +103,7 @@ const AppLayout = () => {
               />
              </div>
              </div>
+             </Form>
             </Navbar.Collapse>
           </Container>
         </Navbar>

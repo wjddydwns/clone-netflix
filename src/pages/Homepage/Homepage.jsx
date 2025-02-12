@@ -8,6 +8,7 @@ import Banner from './Components/Banner/Banner'
 import PopularMovieSlide from './Components/PopularMovieSlide/PopularMovieSlide'
 import TopRateMovieSlide from './Components/TopRateMovieSlide/TopRateMovieSlide'
 import UpcomingMoviesSlide from './Components/UpcomingMoviesSlide/UpcomingMoviesSlide'
+import Banner_Video from './Components/Banner_Video/Banner_Video'
 const Homepage = () => {
   return (
     <div style={{backgroundColor:"#0c0c0c"}}>

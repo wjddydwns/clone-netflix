@@ -6,6 +6,7 @@ import MoviePage from './pages/Movies/MoviePage';
 import MovieDetail from './pages/MovieDetail/MovieDetail';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import LoginPage from './pages/Login/LoginPage';
 
 
 function App() {
@@ -16,18 +17,20 @@ function App() {
   // 추쳔 영화 /movies/:id/recommandation
   // 리뷰 /movies/:id/reviews
   return (
-  <Routes>
-    
-    <Route path='/browse' element ={<AppLayout/>}>
-      <Route index element ={<Homepage/>}/>
-      <Route path ="movies">
-        <Route index element={<MoviePage/>}/>
-        <Route path=':id' element= {<MovieDetail/>}/>
-      </Route>
+<Routes>
+  <Route element={<AppLayout />}>
+    <Route path="/" element={<LoginPage />} />
+    <Route path="/browse" element={<Homepage />} />
+    <Route path="/movies">
+      <Route index element={<MoviePage />} />
+      <Route path=":id" element={<MovieDetail />} />
     </Route>
-    <Route path='*' element={<NotFoundPage/>}/>
-   
-  </Routes>
+    {/* 404 페이지 */}
+    <Route path="*" element={<NotFoundPage />} />
+  </Route>
+</Routes>
+
+
   );
 }
 

@@ -7,7 +7,7 @@
     background: linear-gradient(to top, rgba(0, 0, 0, 0.65),transparent);
     position: absolute;
     left: 0;
-    height: 90vh;
+    height:90vh;
     width: 100%;
 }
 .pop_info{
@@ -24,12 +24,18 @@
     z-index: 1;
 }
 @media(max-width:768px){
+    .banner{
+        height: 50vh;
+    }
     .pop_info{
     width: 100%;
     font-size:20px;
     }
 }
 @media(max-width:480px){
+    .banner{
+        height: 30vh;
+    }
     .pop_info{
     width: 100%;
     font-size:10px;
