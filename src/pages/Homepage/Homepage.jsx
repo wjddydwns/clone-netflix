@@ -11,12 +11,14 @@ import UpcomingMoviesSlide from './Components/UpcomingMoviesSlide/UpcomingMovies
 import Banner_Video from './Components/Banner_Video/Banner_Video'
 const Homepage = () => {
   return (
-    <div style={{backgroundColor:"#0c0c0c"}}>
+    <div style={{
+      backgroundColor:"#0c0c0c"}}>
       <Banner/>
       <PopularMovieSlide/>
       <TopRateMovieSlide/>
-      <UpcomingMoviesSlide/>
-    </div>
+      <UpcomingMoviesSlide/>    
+      </div>
+
   )
 }
 

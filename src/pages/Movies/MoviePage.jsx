@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSearchMovieQuery } from '../../hooks/useSearchMovieQuery';
 import { useSearchParams } from 'react-router-dom';
+
 import Alert from 'react-bootstrap/Alert';
 import './MoviePage.style.css'
 import { responsive } from '../../constants/responsive';

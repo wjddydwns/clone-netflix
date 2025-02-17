@@ -3,7 +3,7 @@ import api from "../utils/api"
 
 const fetchPopularMovies=()=>{
    
-    return api.get(`/movie/popular?language=ko&page=1&region=KR`)
+    return api.get(`/movie/now_playing?language=ko-KR&page=1`)
 }
 export const usePopularMoviesQuery=()=>{
     return useQuery({

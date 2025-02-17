@@ -27,6 +27,17 @@
     transform: scale(1.1) translateZ(40px);
     z-index: 2;
 }
+@media(max-width:1710px){
+    .MovieCard{
+        border-radius: 5px;
+        width: 100%;
+        height:145px;
+        background-size: cover;
+        background-position: center;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+}
 @media(max-width:768px){
     .MovieCard{
         border-radius: 5px;

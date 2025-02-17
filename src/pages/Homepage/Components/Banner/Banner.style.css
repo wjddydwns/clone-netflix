@@ -1,29 +1,56 @@
 .banner{
-    height: 90vh;
+    height: 952px;
+    width: 100%;
     background-position:bottom;
+    background-repeat: no-repeat;
+    mask-size: 100% 120%;
+    background-size: 100% 100%;
+    background-position: center center;
+    mask-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
 }
 .banner:before{
     content:'';
     background: linear-gradient(to top, rgba(0, 0, 0, 0.65),transparent);
     position: absolute;
     left: 0;
-    height:90vh;
+    height:100%;
     width: 100%;
 }
 .pop_info{
+    z-index: 5;
+    position: absolute;
+    padding: 30px;
     color: white;
-    width: 36%;
+    width: 40%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    padding: 20px;
+    align-items: center;
+    justify-content: flex-end;
+    height: 80%;
     
+}
+
+.title_image {
+    z-index: 6;
+    width: 685px; /* 가로 크기 */
+    height: 291px; /* 세로 크기 */
+    background-size: contain; /* 이미지 크기 맞춤 */
+    background-repeat: no-repeat; /* 반복 없음 */
+    background-position: center; /* 중앙 정렬 */
+  }
+.button_box{
+    width: 40%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 .pop_info > *{
     z-index: 1;
 }
-@media(max-width:768px){
+@media(max-width:800px){
     .banner{
         height: 50vh;
     }

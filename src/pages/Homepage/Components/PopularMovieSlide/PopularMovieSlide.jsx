@@ -4,7 +4,9 @@ import Alert from 'react-bootstrap/Alert';
 import MovieSlider from '../../../../common/MovieSlider/MovieSlider';
 import { responsive } from '../../../../constants/responsive';
 const PopularMovieSlide = () => {
+
   const {data,isLoading,isError,error} = usePopularMoviesQuery()
+  
   if (isLoading) {
     return <h1>Loading...</h1>;
   }

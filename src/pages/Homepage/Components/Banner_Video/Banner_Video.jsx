@@ -1,91 +1,109 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import ReactPlayer from "react-player";
 import { usePopularMoviesQuery } from '../../../../hooks/usePopularMoviesQuery';
-import api from "../../../../utils/api"; // ✅ axios 인스턴스 가져오기
+import { useMovieTrailerQuery } from '../../../../hooks/useMovieTrailerQuery';
 import './BannerVideo.style.css';
 
-const Banner_Video = ({ onVideoEnd }) => {
+const Banner_Video = ({ onVideoEnd ,select_movie_id}) => {
     // 🎬 인기 영화 가져오기
-    const { data: popularData, isLoading: isPopularLoading, isError: isPopularError, error: popularError } = usePopularMoviesQuery();
+    const { data: popularData, isLoading: isPopularLoading, isError, error } = usePopularMoviesQuery();
+    const movie_id = popularData?.results?.[0]?.id;
 
-    // ✅ 예고편 데이터를 저장할 상태 생성
-    const [trailerKey, setTrailerKey] = useState(null);
-    const [isTrailerLoading, setIsTrailerLoading] = useState(true);
-    const [trailerError, setTrailerError] = useState(null);
-    const [showVideo, setShowVideo] = useState(true); // 🎬 동영상 표시 여부
+    // ✅ `movie_id`가 있을 때만 요청
+    const { data: trailerData, isLoading: isTrailerLoading, error: trailerError } = useMovieTrailerQuery(movie_id, {
+        enabled: !!movie_id, // ✅ movie_id 없으면 요청하지 않음
+    });
+    const { data: trailerDataSelect} = useMovieTrailerQuery(select_movie_id, {
+        enabled: !!select_movie_id,
+    });
+    
 
-    useEffect(() => {
-        // 🎬 첫 번째 인기 영화의 ID 가져오기
-        const movieId = popularData?.results?.[0]?.id;
-        if (movieId) {
-            fetchMovieTrailers(movieId);
-        }
-    }, [popularData]);
+    // 🎥 `type`이 "Trailer"이고 `site`가 "YouTube"인 영상만 필터링
+    const trailer = trailerData?.results?.find(
+        video => video.type === "Trailer" && video.site === "YouTube"
+    );
+    const trailerSelect = trailerDataSelect?.results?.find
+    (video => video.type === "Trailer" && video.site === "YouTube");
 
-    // ✅ API 요청을 직접 호출하는 함수
-    const fetchMovieTrailers = async (movieId) => {
-        try {
-            const response = await api.get(`/movie/${movieId}/videos?language=ko`);
-            const trailers = response.data.results;
-            
-            if (trailers.length > 0) {
-                setTrailerKey(trailers[0]?.key); // ✅ 첫 번째 예고편 선택
-            } else {
-                setTrailerKey(null); // ✅ 예고편이 없을 경우
-            }
-        } catch (error) {
-            setTrailerError(error.message);
-        } finally {
-            setIsTrailerLoading(false);
-        }
-    };
+    const [showVideo, setShowVideo] = useState(true);
 
+    // // 디버깅 로그
+    // console.log("🎬 movie_id:", movie_id);
+    // console.log("🎬 trailerData:", trailerData);
+    // console.log("🎬 trailerKey:", trailer?.key);
+
+    // ✅ 로딩 및 에러 처리
     if (isPopularLoading || isTrailerLoading) return <h1>Loading...</h1>;
-    if (isPopularError) return <Alert variant='danger'>{popularError.message}</Alert>;
-    if (trailerError) return <Alert variant='danger'>{trailerError}</Alert>;
+    if (isError) return <Alert variant='danger'>인기 영화를 불러오는 중 오류 발생: {error.message}</Alert>;
+    if (trailerError) return <Alert variant='danger'>예고편을 불러오는 중 오류 발생: {trailerError.message}</Alert>;
 
     return (
-        <div className="video-wrapper" style={{ display: showVideo ? 'block' : 'none' }}>
-            {/* 🎬 예고편 자동 재생 */}
-            {trailerKey ? (
-                <div className="player-container">
-                    <ReactPlayer
-                        className="play"
-                        url={`https://www.youtube.com/watch?v=${trailerKey}`} // TMDB에서 가져온 YouTube 예고편
-                        playing={true}  // 자동 재생
-                        loop={false}    // 반복 재생 OFF (한 번만 재생)
-                        muted={true}    // 음소거 (자동 재생 가능하게)
-                        width="100%"
-                        height="100%"  // 부모 div 크기에 맞게 자동 조정
-                        onEnded={() => { 
-                            setShowVideo(false);  // 🔥 동영상이 끝나면 숨김
-                            onVideoEnd(); // 🔥 부모 컴포넌트(Banner)에서 상태 변경
-                        }}
-                        config={{
-                            youtube: {
-                                playerVars: { 
-                                    controls: 0, // ✅ 재생 바 숨김
-                                    modestbranding: 1, // ✅ YouTube 로고 제거
-                                    rel: 0, // ✅ 관련 동영상 표시 안 함
-                                    showinfo: 0, // ✅ 비디오 정보 숨김
-                                    fs: 0, // ✅ 전체 화면 버튼 제거
-                                    iv_load_policy: 3, // ✅ 자막 & 인터랙티브 요소 제거
-                                    autoplay: 1, // ✅ 자동 재생
-                                    vq: 'hd2160' // ✅ 4K 화질 고정
-                                }
-                            }
-                        }}
-                        style={{
-                            pointerEvents: 'none' // ✅ 클릭 방지 (유저 조작 X)
-                        }}
-                    />
-                </div>
-            ) : (
-                <Alert variant="warning">예고편을 찾을 수 없습니다.</Alert>
-            )}
-        </div>
+        <div className="video-wrapper">
+    {/* 🎬 예고편 자동 재생 */}
+    <div className="player-container">
+        {trailerSelect?.key ? (
+            <ReactPlayer 
+                url={`https://www.youtube.com/watch?v=${trailerSelect.key}`} 
+                playing={true} 
+                loop={false}
+                muted={false}
+                width="100%"
+                height="100%"
+                onEnded={() => { 
+                    setShowVideo(false);
+                    onVideoEnd();
+                }}
+                config={{
+                    youtube: {
+                        playerVars: { 
+                            controls: 0,        
+                            modestbranding: 1,  
+                            rel: 0,            
+                            showinfo: 0,       
+                            fs: 0,             
+                            iv_load_policy: 3,  
+                            autoplay: 1,       
+                            vq: 'hd1080'       
+                        }
+                    }
+                }}
+            />
+        ) : trailer?.key ? (
+            <ReactPlayer
+                className="play"
+                url={`https://www.youtube.com/watch?v=${trailer?.key}`} 
+                playing={true}   
+                loop={false}     
+                muted={false}    
+                width="100%"
+                height="100%"    
+                onEnded={() => { 
+                    setShowVideo(false);
+                    onVideoEnd();
+                }}
+                config={{
+                    youtube: {
+                        playerVars: { 
+                            controls: 0,        
+                            modestbranding: 1,  
+                            rel: 0,            
+                            showinfo: 0,       
+                            fs: 0,             
+                            iv_load_policy: 3,  
+                            autoplay: 1,       
+                            vq: 'hd1080'       
+                        }
+                    }
+                }}
+            />
+        ) : (
+            <Alert variant="warning">🎥 유효한 예고편을 찾을 수 없습니다.</Alert>
+        )}
+    </div>
+</div>
+
     );
-}
+};
 
 export default Banner_Video;

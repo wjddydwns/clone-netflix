@@ -8,6 +8,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import './AppLayout.style.css';
 import logo from '../assets/img/logo.png';
 import search from '../assets/img/search.png';
+import Footer from "./Footer";
 
 const AppLayout = () => {
   const [isInputVisible, setIsInputVisible] = useState(false);
@@ -109,9 +110,9 @@ const AppLayout = () => {
         </Navbar>
       </div>
       
-      <div className="outlet-container">
         <Outlet />
-      </div>
+      
+     <Footer/>
     </div>
   );
 };
