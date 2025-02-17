@@ -1,8 +1,9 @@
 .MovieCard{
     border-radius: 5px;
-    width: 200px;
-    height:300px;
+    width: 280px;
+    height:163px;
     background-size: cover;
+
     cursor: pointer;
     transition: 0.5s;
    

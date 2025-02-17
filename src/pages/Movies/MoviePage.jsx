@@ -33,7 +33,6 @@ const MoviePage = () => {
       title={`'${keyword}' 에 대한 검색결과`}
       movies={data.results} 
       responsive={responsive}/>
-      <Recommend/>
   </div>
   );
 };

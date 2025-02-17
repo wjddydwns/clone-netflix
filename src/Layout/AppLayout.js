@@ -61,16 +61,16 @@ const AppLayout = () => {
       <div className={`box nav ${scroll ? "nav_black" : ""}`}>
         <Navbar expand="lg" className="bg-transparent nav-color">
           <Container fluid>
-            <Navbar.Brand href="#">
+            <Navbar.Brand href="/browse">
               <img width={100} src={logo} alt="Logo" onClick={()=>navigate(`/browse`)}/>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
               <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-                <Nav.Link href="#action1" className="text-white">홈</Nav.Link>
-                <Nav.Link href="#action2" className="text-white">시리즈</Nav.Link>
-                <Nav.Link href="#action3" className="text-white">영화</Nav.Link>
-                <Nav.Link href="#action4" className="text-white">NEW! 요즘 대세 콘텐츠</Nav.Link>
+                <Nav.Link href="/browse" className="text-white">홈</Nav.Link>
+                <Nav.Link href="/series" className="text-white">시리즈</Nav.Link>
+                <Nav.Link href="/movie" className="text-white">영화</Nav.Link>
+                <Nav.Link href="/latest" className="text-white">NEW! 요즘 대세 콘텐츠</Nav.Link>
               </Nav>
 
               {/* 검색 영역 */}

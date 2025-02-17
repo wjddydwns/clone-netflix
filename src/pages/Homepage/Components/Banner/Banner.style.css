@@ -23,12 +23,12 @@
     position: absolute;
     padding: 30px;
     color: white;
-    width: 40%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    height: 80%;
+    height: 85%;
     
 }
 

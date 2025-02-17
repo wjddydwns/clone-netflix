@@ -1,5 +1,5 @@
 .carousel-container{
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,8 @@
     flex-direction: column;
     display: flex;
     justify-content: center;
-    align-items: center;}
+    align-items: center;
+    background-color: #0c0c0c;}
 .slide_box{
     justify-content: center;
     align-items: center;

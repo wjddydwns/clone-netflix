@@ -2,8 +2,9 @@ import React from 'react'
 import { useRecommendMovieQuery } from '../../../../hooks/useRecommendMovieQuery'
 import Alert from 'react-bootstrap/Alert';
 import GridCard from '../../../../common/GridCard/GridCard';
-const Recommend = () => {
-    const {data,isLoading,isError,error} = useRecommendMovieQuery()
+const Recommend = ({select_movie_id}) => {
+  
+    const {data,isLoading,isError,error} = useRecommendMovieQuery(select_movie_id)
     console.log("qqq",data)
 
     if (isLoading) {
@@ -22,7 +23,7 @@ const Recommend = () => {
   return (
     <div>
         <GridCard 
-        title='랜덤 추천 영화' 
+        title={`관련 추천 영화`} 
         movies={data.results} />
     </div>
 
