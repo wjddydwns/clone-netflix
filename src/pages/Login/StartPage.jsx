@@ -3,7 +3,7 @@ import LoginPage from './EmailPage/LoginPage'
 import ContentPage from './ContentPage/ContentPage'
 import { Container } from 'react-bootstrap'
 
-const StratPage = () => {
+const StartPage = () => {
   return (
     <div>
         <LoginPage/>
@@ -12,4 +12,4 @@ const StratPage = () => {
   )
 }
 
-export default StratPage
+export default StartPage
