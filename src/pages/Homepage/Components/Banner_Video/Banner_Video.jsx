@@ -28,11 +28,7 @@ const Banner_Video = ({ onVideoEnd ,select_movie_id}) => {
 
     const [showVideo, setShowVideo] = useState(true);
 
-    // // 디버깅 로그
-    // console.log("🎬 movie_id:", movie_id);
-    // console.log("🎬 trailerData:", trailerData);
-    // console.log("🎬 trailerKey:", trailer?.key);
-
+   
     // ✅ 로딩 및 에러 처리
     if (isPopularLoading || isTrailerLoading) return <h1>Loading...</h1>;
     if (isError) return <Alert variant='danger'>인기 영화를 불러오는 중 오류 발생: {error.message}</Alert>;

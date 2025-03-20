@@ -17,8 +17,7 @@ const Banner = ({ select_movie_id }) => {
     const { data: movieTitleImage } = useMovieImageQuery(movie_id);
     const { data: movieSelectTitleImage } = useMovieImageQuery(select_movie_id);
 
-    console.log("🎨 기본 타이틀 이미지:", movieTitleImage);
-    console.log("🎨 선택 타이틀 이미지:", movieSelectTitleImage);
+    
 
     // ✅ 동영상 종료 여부
     const [videoEnded, setVideoEnded] = useState(false);

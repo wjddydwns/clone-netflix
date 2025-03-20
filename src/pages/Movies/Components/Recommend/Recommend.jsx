@@ -5,7 +5,6 @@ import GridCard from '../../../../common/GridCard/GridCard';
 const Recommend = ({select_movie_id}) => {
   
     const {data,isLoading,isError,error} = useRecommendMovieQuery(select_movie_id)
-    console.log("qqq",data)
 
     if (isLoading) {
         return <h1>Loading...</h1>;
