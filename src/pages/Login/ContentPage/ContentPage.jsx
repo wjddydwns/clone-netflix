@@ -129,7 +129,7 @@ const ContentPage = () => {
             <p>시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를 입력하세요.</p>
             <div className='Email_box'>
               <input type='text' placeholder='이메일 주소'/>
-              <button>시작하기 > </button>
+              <button>시작하기  </button>
             </div>
             </div>
     </div>
