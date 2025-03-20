@@ -79,3 +79,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 5. npm i axios
 6. npm i react-multi-carousel --save
 
+<img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=React-Query&logoColor=white">
