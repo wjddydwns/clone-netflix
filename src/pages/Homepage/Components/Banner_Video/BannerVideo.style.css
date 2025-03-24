@@ -1,57 +1,59 @@
 /* 📌 부모 컨테이너: 동영상 크기 조정 가능 */
 .video-wrapper {
     width: 100%;
-    height: 100%; /* 기본 크기 */
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     position: absolute;
     z-index: 2;
-    
-}   
-
-/* 📌 ReactPlayer를 감싸는 컨테이너 */
-.player-container {
-    
+  }
+  
+  /* 📌 ReactPlayer를 감싸는 컨테이너 */
+  .player-container {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 9; /* 🔥 비율 유지 */
-}
-
-/* 🔥 ReactPlayer가 부모의 크기를 따라가도록 설정 */
-.play {
+    aspect-ratio: 16 / 9;
+  }
+  
+  /* 🔥 ReactPlayer가 부모의 크기를 따라가도록 설정 */
+  .play {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; /* 부모 div 크기에 맞게 자동 조정 */
-}
-
-/* 📌 반응형 크기 조정 */
-@media (max-width: 1024px) {
+    height: 100%;
+  }
+  
+  /* 📌 반응형 미디어 쿼리 */
+  @media (max-width: 1024px) {
     .video-wrapper {
-        height: 70vh;
+      height: 70vh;
     }
+  
     .player-container {
-        aspect-ratio: 16 / 9;
+      aspect-ratio: 16 / 9;
     }
-}
-
-@media (max-width: 768px) {
+  }
+  
+  @media (max-width: 768px) {
     .video-wrapper {
-        height: 50vh;
+      height: 50vh;
     }
+  
     .player-container {
-        aspect-ratio: 16 / 9;
+      aspect-ratio: 16 / 9;
     }
-}
-
-@media (max-width: 480px) {
+  }
+  
+  @media (max-width: 500px) {
     .video-wrapper {
-        height: 30vh;
+      height: 30vh;
     }
+  
     .player-container {
-        aspect-ratio: 16 / 9;
+      aspect-ratio: 16 / 9;
     }
-}
+  }
+  

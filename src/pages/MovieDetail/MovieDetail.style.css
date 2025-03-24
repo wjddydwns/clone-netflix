@@ -137,11 +137,11 @@
   }
   
   /* 반응형 스타일 */
-  @media(max-width: 800px) {
+  @media(max-width: 500px) {
     .movie-backdrop {
       height: 250px;
     }
-  
+
     .movie-logo {
       max-width: 180px;
     }

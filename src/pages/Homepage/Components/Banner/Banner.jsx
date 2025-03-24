@@ -87,7 +87,7 @@ const Banner = ({ select_movie_id }) => {
                         )}
 
                         {/* ✅ 개요 */}
-                        <div style={{ fontSize: "20px" }}>
+                        <div className='movie_info'>
                             {overview ? (
                                 overview
                             ) : (

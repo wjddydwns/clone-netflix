@@ -26,7 +26,7 @@
     width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-end;
     height: 85%;
     
@@ -34,15 +34,15 @@
 
 .title_image {
     z-index: 6;
-    width: 685px; /* 가로 크기 */
+    width: 50%; /* 가로 크기 */
     height: 291px; /* 세로 크기 */
     background-size: contain; /* 이미지 크기 맞춤 */
     background-repeat: no-repeat; /* 반복 없음 */
     background-position: center; /* 중앙 정렬 */
   }
 .button_box{
-    width: 40%;
-    height: 30%;
+    width: 400px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -50,21 +50,32 @@
 .pop_info > *{
     z-index: 1;
 }
-@media(max-width:800px){
-    .banner{
-        height: 50vh;
+
+@media (max-width: 500px) {
+    .banner {
+    width: 100%;
+      height: 30vh 
+    }
+  
+    .title_image {
+      width: 80%;
+      height: 80%;
+    }
+  
+    .button_box{
+        width: 230px;
+        height: 60px;
     }
     .pop_info{
-    width: 100%;
-    font-size:20px;
+        color: white;
+        width: 90%;
+        height:90%;
+        
     }
-}
-@media(max-width:480px){
-    .banner{
-        height: 30vh;
+    .movie_info{
+        display: none;
     }
-    .pop_info{
-    width: 100%;
-    font-size:10px;
-    }
-}
+    
+
+  }
+  
