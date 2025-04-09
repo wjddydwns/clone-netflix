@@ -1,166 +1,216 @@
-/* src/pages/MovieDetail/MovieDetail.style.css */
+/* src/pages/MovieDetail/MovieDetail.style.css - 최적화 버전 */
+
+/* 모달 스타일 */
 .custom-modal .modal-content {
-    background-color: #141414;
-    color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    padding: 0;
-    height: 100%;
-  }
+  background-color: #141414;
+  color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0;
+  height: 100%;
+  /* 성능 최적화를 위한 GPU 가속 */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* 모달 내부 요소들의 높이 관련 스타일 - 그룹화 */
 .custom-modal .video-wrapper {
   height: 449px;
-  }
+}
 .custom-modal .banner {
-    height: 449px;
-    }
-.custom-modal .title_image  {
-        height: 150px;
-        width: 100%;
-    }
-.custom-modal .button_box  {
-        height: 100px;
-        width: 100%;
-        } 
-.custom-modal .pop_info  {
-        height: 100%
-        } 
+  height: 449px;
+}
+.custom-modal .title_image {
+  height: 150px;
+  width: 100%;
+}
+.custom-modal .button_box {
+  height: 100px;
+  width: 100%;
+} 
+.custom-modal .pop_info {
+  height: 100%;
+} 
 
-  .movie-detail-container {
-    position: relative;
-    font-family: 'Netflix Sans', Arial, sans-serif;
-  }
-  
-  /* 배경 이미지 */
+/* 주요 컨테이너 */
+.movie-detail-container {
+  position: relative;
+  font-family: 'Netflix Sans', Arial, sans-serif;
+}
 
-  
-  .close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    border: none;
-    font-size: 24px;
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: 0.3s;
-  }
-  
-  .close-btn:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-    color: black;
-  }
-  
-  /* 컨텐츠 */
-  .movie-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  /* 로고 or 타이틀 */
+/* 닫기 버튼 */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.2s, background-color 0.3s; /* 성능 최적화: transform만 애니메이션 */
+  /* 터치 디바이스 최적화 */
+  touch-action: manipulation;
+}
+
+.close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: black;
+  transform: scale(1.1); /* transform으로 애니메이션 처리 */
+}
+
+/* 컨텐츠 영역 */
+.movie-detail-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* 영화 로고와 타이틀 스타일 */
+.movie-logo {
+  max-width: 250px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.movie-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* 영화 정보 텍스트 */
+.movie-overview {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #b3b3b3;
+}
+
+/* 영화 정보 배지 */
+.movie-info {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.badge {
+  padding: 5px 10px;
+  font-size: 13px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+}
+
+/* 버튼 컨테이너 */
+.movie-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* 버튼 공통 스타일 */
+.action-btn {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+  touch-action: manipulation;
+}
+
+/* 재생 버튼 */
+.play-btn {
+  composes: action-btn;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #e50914;
+  color: white;
+  font-weight: bold;
+}
+
+.play-btn:hover {
+  background-color: #f40612;
+  transform: scale(1.05);
+}
+
+/* 추가 및 좋아요 버튼 */
+.add-btn, .like-btn {
+  composes: action-btn;
+  padding: 10px;
+  font-size: 16px;
+  background-color: rgba(109, 109, 110, 0.7);
+  color: white;
+}
+
+.add-btn:hover, .like-btn:hover {
+  background-color: rgba(109, 109, 110, 1);
+  transform: scale(1.05);
+}
+
+/* 출연진 정보 */
+.movie-cast {
+  font-size: 14px;
+  color: #b3b3b3;
+}
+
+/* 로딩 및 에러 상태 컨텐츠 */
+.loading-content, .error-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: white;
+  font-size: 18px;
+}
+
+/* 반응형 스타일 - 미디어 쿼리 최적화 */
+@media (max-width: 768px) {
   .movie-logo {
-    max-width: 250px;
-    height: auto;
-    margin-bottom: 10px;
+    max-width: 200px;
   }
   
   .movie-title {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 28px;
   }
   
   .movie-overview {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #b3b3b3;
-  }
-  
-  /* 정보 배지 */
-  .movie-info {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  
-  .badge {
-    padding: 5px 10px;
-    font-size: 13px;
-    background-color: rgba(255, 255, 255, 0.15);
-    border-radius: 5px;
-  }
-  
-  /* 버튼들 */
-  .movie-actions {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .play-btn {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #e50914;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: 0.3s;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .play-btn:hover {
-    background-color: #f40612;
-  }
-  
-  .add-btn, .like-btn {
-    padding: 10px;
-    font-size: 16px;
-    background-color: rgba(109, 109, 110, 0.7);
-    color: white;
-    border-radius: 5px;
-    transition: 0.3s;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .add-btn:hover, .like-btn:hover {
-    background-color: rgba(109, 109, 110, 1);
-  }
-  
-  /* 출연진 */
-  .movie-cast {
     font-size: 14px;
-    color: #b3b3b3;
   }
-  
-  /* 반응형 스타일 */
-  @media(max-width: 500px) {
-    .movie-backdrop {
-      height: 250px;
-    }
+}
 
-    .movie-logo {
-      max-width: 180px;
-    }
-  
-    .movie-title {
-      font-size: 24px;
-    }
-  
-    .movie-overview {
-      font-size: 13px;
-    }
-  
-    .movie-actions button {
-      font-size: 14px;
-      padding: 8px 12px;
-    }
-  
-    .badge {
-      font-size: 11px;
-    }
+@media (max-width: 500px) {
+  .movie-logo {
+    max-width: 180px;
+  }
+
+  .movie-title {
+    font-size: 24px;
+  }
+
+  .movie-overview {
+    font-size: 13px;
+  }
+
+  .movie-actions button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .badge {
+    font-size: 11px;
   }
   
+  .custom-modal .video-wrapper,
+  .custom-modal .banner {
+    height: 250px;
+  }
+  
+  .custom-modal .title_image {
+    height: 100px;
+  }
+  
+  .custom-modal .button_box {
+    height: 80px;
+  }
+}

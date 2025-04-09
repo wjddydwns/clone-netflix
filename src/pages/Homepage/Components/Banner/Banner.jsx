@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import './Banner.style.css';
 import { usePopularMoviesQuery } from '../../../../hooks/usePopularMoviesQuery';
 import FadeContent from '../../../../assets/Animations/FadeContent/FadeContent';
@@ -11,45 +11,54 @@ import InforButton from '../../../../common/Button/InforButton';
 const Banner = ({ select_movie_id }) => {
     // ✅ 인기 영화 정보
     const { data, isLoading, isError, error } = usePopularMoviesQuery();
-    const movie_id = data?.results?.[0]?.id; 
+    
+    // 기본 영화 ID를 useMemo로 최적화 (data가 변경될 때만 재계산)
+    const movie_id = useMemo(() => data?.results?.[0]?.id, [data]);
 
     // ✅ 선택된 영화 및 기본 영화 타이틀 이미지
     const { data: movieTitleImage } = useMovieImageQuery(movie_id);
     const { data: movieSelectTitleImage } = useMovieImageQuery(select_movie_id);
 
-    
-
     // ✅ 동영상 종료 여부
     const [videoEnded, setVideoEnded] = useState(false);
 
-    // ✅ 로고 선택 (한국어 우선, 없으면 영어)
-    const getPreferredLogo = (logos) => {
+    // ✅ 로고 선택 (한국어 우선, 없으면 영어) - useCallback으로 최적화
+    const getPreferredLogo = useCallback((logos) => {
         if (!logos?.length) return null;
         return (
             logos.find(logo => logo.iso_639_1 === 'ko') || 
             logos.find(logo => logo.iso_639_1 === 'en') ||
             null
         );
-    };
+    }, []);
 
-    // ✅ 한국어 > 영어 로고 우선 표시
-    const selectedLogo = getPreferredLogo(
-        movieSelectTitleImage?.logos?.length 
-            ? movieSelectTitleImage?.logos 
-            : movieTitleImage?.logos
-    );
+    // ✅ 한국어 > 영어 로고 우선 표시 - useMemo로 최적화
+    const selectedLogo = useMemo(() => {
+        return getPreferredLogo(
+            movieSelectTitleImage?.logos?.length 
+                ? movieSelectTitleImage?.logos 
+                : movieTitleImage?.logos
+        );
+    }, [getPreferredLogo, movieSelectTitleImage?.logos, movieTitleImage?.logos]);
 
+    // ✅ 배경 이미지 (선택된 영화 > 기본 영화) - useMemo로 최적화
+    const backdropPath = useMemo(() => {
+        return movieSelectTitleImage?.backdrops?.[0]?.file_path 
+            || movieTitleImage?.backdrops?.[0]?.file_path 
+            || data?.results?.[0]?.backdrop_path;
+    }, [movieSelectTitleImage?.backdrops, movieTitleImage?.backdrops, data?.results]);
 
+    // ✅ 개요 (선택된 영화 > 기본 영화) - useMemo로 최적화
+    const overview = useMemo(() => {
+        return select_movie_id 
+            ? movieSelectTitleImage?.overview 
+            : data?.results?.[0]?.overview;
+    }, [select_movie_id, movieSelectTitleImage?.overview, data?.results]);
 
-    // ✅ 배경 이미지 (선택된 영화 > 기본 영화)
-    const backdropPath = movieSelectTitleImage?.backdrops?.[0]?.file_path 
-        || movieTitleImage?.backdrops?.[0]?.file_path 
-        || data?.results?.[0]?.backdrop_path;
-
-    // ✅ 개요 (선택된 영화 > 기본 영화)
-    const overview = select_movie_id 
-        ? movieSelectTitleImage?.overview 
-        : data?.results?.[0]?.overview;
+    // 비디오 종료 핸들러를 useCallback으로 최적화
+    const handleVideoEnd = useCallback(() => {
+        setVideoEnded(true);
+    }, []);
 
     // ✅ 로딩 및 에러 처리
     if (isLoading) return <h1>Loading...</h1>;
@@ -67,7 +76,7 @@ const Banner = ({ select_movie_id }) => {
                 {!videoEnded && (
                     <Banner_Video 
                         select_movie_id={select_movie_id} 
-                        onVideoEnd={() => setVideoEnded(true)} 
+                        onVideoEnd={handleVideoEnd} 
                     />
                 )}
 
@@ -88,11 +97,7 @@ const Banner = ({ select_movie_id }) => {
 
                         {/* ✅ 개요 */}
                         <div className='movie_info'>
-                            {overview ? (
-                                overview
-                            ) : (
-                                <></>
-                            )}
+                            {overview && overview}
                         </div>
 
                         {/* ✅ 버튼 */}
@@ -107,4 +112,5 @@ const Banner = ({ select_movie_id }) => {
     );
 };
 
-export default Banner;
+// React.memo로 컴포넌트 자체를 메모이제이션
+export default React.memo(Banner);

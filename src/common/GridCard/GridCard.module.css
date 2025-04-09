@@ -1,0 +1,34 @@
+/* GridCard.module.css */
+.gridContainer {
+  padding: 20px 10px;
+}
+
+.title {
+  color: white;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.cardWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gridContainer {
+    padding: 15px 5px;
+  }
+  
+  .title {
+    font-size: 1.2rem;
+  }
+}
