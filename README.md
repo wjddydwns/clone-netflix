@@ -2,7 +2,7 @@
 Netflix를 클론한 웹 애플리케이션으로, TMDB API를 기반으로 영화 및 TV 프로그램 정보를 제공하며 실제 넷플릭스 UI를 유사하게 구현한 프로젝트입니다. React, axios, React-Query, CSS, 반응형 웹을 학습하며 제작되었습니다.
 
 🔗 링크
-👉 배포 링크 바로가기
+👉 [배포 링크 바로가기](https://effulgent-babka-cf232a.netlify.app/)
 
 
 🛠 기술 스택
