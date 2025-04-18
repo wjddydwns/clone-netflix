@@ -1,82 +1,77 @@
-# Getting Started with Create React App
+🍿 Clone Netflix
+Netflix를 클론한 웹 애플리케이션으로, TMDB API를 기반으로 영화 및 TV 프로그램 정보를 제공하며 실제 넷플릭스 UI를 유사하게 구현한 프로젝트입니다. React, axios, React-Query, CSS, 반응형 웹을 학습하며 제작되었습니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🔗 링크
+👉 배포 링크 바로가기
 
-## Available Scripts
 
-In the project directory, you can run:
+🛠 기술 스택
+React Router DOM: react-router-dom을 통해 메인 페이지, 상세 페이지, 검색 페이지, 에러 페이지 등 다양한 라우팅 처리
 
-### `npm start`
+React Query: @tanstack/react-query로 TMDB API 데이터를 비동기 요청 및 캐싱 처리
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+React Bootstrap: 기본 UI 구성 및 반응형 스타일 적용
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Axios: 외부 API 호출 (TMDB)용 HTTP 클라이언트
 
-### `npm test`
+React Multi Carousel: 영화 목록을 캐러셀(슬라이더) 형식으로 출력
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+🎬 주요 기능
+✅ TMDB API를 통한 실시간 영화/TV 프로그램 목록 조회
 
-### `npm run build`
+✅ 메인 페이지에서 인기 콘텐츠 슬라이드 구현
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+✅ 영화 클릭 시 상세 정보 페이지
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+✅ 검색 페이지에서 영화 검색 기능
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+✅ 사용자 경험을 위한 404 에러 페이지 제공
 
-### `npm run eject`
+✅ 모든 화면 반응형 구현 (모바일/태블릿/PC 대응)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+📸 미리보기
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+홈	메인	상세	검색	에러
+이미지는 Notion의 URL이 아닌 직접 캡처 후 imgur나 GitHub Issues 등에 업로드하여 URL로 대체해 주세요.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+⚙️ 설치 및 실행
+bash
+복사
+편집
+git clone https://github.com/wjddydwns/clone-netflix.git
+cd clone-netflix
+npm install
+npm start
+🔐 환경 변수 설정
+루트 디렉토리에 .env 파일을 생성하고 아래와 같이 입력해주세요:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+env
+복사
+편집
+REACT_APP_TMDB_API_KEY=여기에_본인의_API_KEY
+📄 라이선스
+본 프로젝트는 MIT 라이선스를 따릅니다.
 
-## Learn More
+# 홈 페이지
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![FireShot Capture 025 - React App -  localhost  (1)](https://github.com/user-attachments/assets/e95bfbd2-4555-4561-8501-7b2081538b92)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# 메인페이지
+![FireShot Capture 026 - React App -  localhost](https://github.com/user-attachments/assets/00f03e75-5e9d-4ef4-9653-b72a23416112)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+# 영화 상세 페이지
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![image](https://github.com/user-attachments/assets/2362d42b-72b0-4790-8bfe-3910e5160bc4)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# 검색 페이지
 
-### Advanced Configuration
+![image](https://github.com/user-attachments/assets/8179b103-3746-4e09-826d-57c8eb27c0d7)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# 에러페이지
+![chrome-capture-2025-3-20 (1) (1)](https://github.com/user-attachments/assets/6865359e-f9e5-41ba-ad01-18524f673a0f)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-### `install List` 
-사용된 라이브러리
-=> 리액트 , 리액트-돔, 리액트-라우터-돔 , 리액트-부트스트랩, 리액트-쿼리 + 데브툴즈 
-1. npm i react-dom react-router-dom 
-2. npm i react-bootstrap bootsrap
-3. npm i @tanstack/react-query
-4. npm i @tanstack/react-query-devtools
-5. npm i axios
-6. npm i react-multi-carousel --save
-
-<img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=React-Query&logoColor=white">
