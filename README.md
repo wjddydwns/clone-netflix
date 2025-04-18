@@ -32,8 +32,6 @@ React Multi Carousel: 영화 목록을 캐러셀(슬라이더) 형식으로 출�
 
 ⚙️ 설치 및 실행
 ```bash
-복사
-편집
 git clone https://github.com/wjddydwns/clone-netflix.git
 cd clone-netflix
 npm install
