@@ -29,10 +29,6 @@ React Multi Carousel: 영화 목록을 캐러셀(슬라이더) 형식으로 출�
 
 ✅ 모든 화면 반응형 구현 (모바일/태블릿/PC 대응)
 
-📸 미리보기
-
-홈	메인	상세	검색	에러
-이미지는 Notion의 URL이 아닌 직접 캡처 후 imgur나 GitHub Issues 등에 업로드하여 URL로 대체해 주세요.
 
 ⚙️ 설치 및 실행
 bash
@@ -42,15 +38,10 @@ git clone https://github.com/wjddydwns/clone-netflix.git
 cd clone-netflix
 npm install
 npm start
-🔐 환경 변수 설정
-루트 디렉토리에 .env 파일을 생성하고 아래와 같이 입력해주세요:
 
-env
-복사
-편집
-REACT_APP_TMDB_API_KEY=여기에_본인의_API_KEY
-📄 라이선스
-본 프로젝트는 MIT 라이선스를 따릅니다.
+
+
+
 
 # 홈 페이지
 
